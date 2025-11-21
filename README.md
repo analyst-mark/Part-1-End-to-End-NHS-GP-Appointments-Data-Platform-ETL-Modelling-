@@ -1,76 +1,61 @@
+# Part-1-End-to-End-NHS-GP-Appointments-Data-Platform-ETL-Modelling-
+
 📊 NHS GP Appointments – Data Warehouse & Analytics Project
 
 Welcome to the NHS GP Appointments Data Warehouse & Analytics Project! 🚀
-This project demonstrates a full end-to-end data engineering and analytics solution using 18 million rows of real NHS open data (GP appointment datasets).
-It is designed as a portfolio-grade project showcasing industry best practices in:
+This repository demonstrates a full end-to-end data engineering and analytics solution using over 18 million rows of NHS GP appointment data.
 
-Data Engineering
-
-Data Modeling
-
-Data Warehousing (Medallion Architecture)
-
-SQL Development
-
-Analytical Reporting
+It is designed as a portfolio-ready project that showcases industry-level skills in data engineering, SQL development, data modeling, and analytical reporting.
 
 🏗️ Data Architecture
 
-This project follows a modern Medallion Architecture using Bronze → Silver → Gold layers inside SQL Server:
+This project is built using a Medallion Architecture (Bronze → Silver → Gold), implemented in SQL Server.
 
 🔶 Bronze Layer – Raw Data
 
-Stores the raw CSV data exactly as ingested (Appointments & Coverage datasets)
+Stores raw CSV files exactly as provided
 
-No transformations
+Zero transformations
 
-Used as the single source of truth
+Ensures auditability and reproducibility
 
-Ideal for auditability
+Ingested using SQL Server bulk insert / import wizard
 
-Ingested using SQL Server Bulk Insert / SSMS import
+⚪ Silver Layer – Cleaned & Conformed
 
-⚪ Silver Layer – Cleaned & Standardised
+Data cleansing (null handling, deduplication, type conversions)
 
-Includes transformations required to make data usable:
+Standardisation of appointment modes, statuses, ICB codes
 
-Converting dates, numerical fields, code fields
+Validation checks
 
-Standardising appointment status, mode, ICB codes
+Indexing and optimisation for large-volume queries
 
-Deduplication
+🟡 Gold Layer – Star Schema
 
-Data quality rules (null handling, validation)
+Optimised analytical data model:
 
-Indexing for performance (needed for 18M rows)
+Dimensions
 
-🟡 Gold Layer – Star Schema for Analytics
+dim_date
 
-Houses fully business-ready analytical data:
+dim_region
 
-Dimension Tables:
+dim_sub_icb
 
-Date
+dim_hcp_type
 
-Region
+dim_appt_status
 
-Sub-ICB Location
+dim_appt_mode
 
-Appointment Status
+dim_wait_time_band
 
-HCP Type
+Fact Tables
 
-Appointment Mode
+fact_appointments (18M+ rows)
 
-Wait Time Band
-
-Fact Tables:
-
-fact_appointments – granular appointment counts
-
-fact_coverage_monthly – registered patient counts per month
-
-Designed for BI dashboards, Power BI, and SQL analytics.
+fact_coverage_monthly
 
 📖 Project Overview
 
@@ -78,167 +63,111 @@ This project includes:
 
 1️⃣ Data Architecture
 
-Structured Medallion-based warehouse using SQL Server.
+Design and implementation of a modern SQL data warehouse using Medallion design patterns.
 
 2️⃣ ETL Pipelines
 
-End-to-end Extract → Transform → Load pipelines including:
+End-to-end development of:
 
-Bulk loading of raw CSV files
+Extract (CSV ingestion)
 
-Cleansing and conforming 18M appointment rows
+Transform (cleaning, standardisation)
 
-Building surrogate keys
-
-Standardising dimensions
-
-Populating fact tables
+Load (fact/dimension population)
 
 3️⃣ Data Modeling
 
-A fully implemented star schema optimised for analytical queries:
+Creation of a robust star schema that supports efficient analytical queries.
 
-Fact and dimension tables
+4️⃣ Analytics & Insights
 
-Surrogate key strategy
+Development of SQL-based analytics covering:
 
-High-performance indexing
-
-Clear table naming conventions
-
-4️⃣ Analytics & Reporting
-
-Advanced analysis answering critical operational questions:
-
-GP appointment trends over time
+GP appointment demand
 
 DNA (Did Not Attend) rates
 
-Appointment mode changes (Face-to-Face vs Telephone vs Video)
+Waiting time band trends
 
-Average waiting times
+Mode of appointment (F2F, Telephone, Video)
 
-Capacity vs demand (per registered patients)
+Registered patient coverage
 
-Region and ICB-level comparisons
+Regional & ICB comparison reports
 
 🎯 Skills Demonstrated
 
-This repository showcases real-world expertise in:
+This project demonstrates practical experience in:
 
-🔹 Data Engineering
+Skill Area	Description
+Data Engineering	ETL pipelines, large-scale CSV ingestion
+SQL Development	Window functions, aggregations, joins
+Data Modeling	Dimensional modeling, star schema design
+Data Architecture	Medallion architecture implementation
+Analytics	KPI development, trend analysis
 
-Large-scale ingestion (18M records)
+Relevant for roles such as:
+Data Engineer, SQL Developer, ETL Developer, Analytics Engineer, BI Developer
 
-SQL Server ETL
-
-Data standardisation & quality checks
-
-Dimensional modeling (Kimball)
-
-🔹 SQL Development
-
-Complex joins
-
-Aggregations over large datasets
-
-CTEs, windows functions
-
-Performance tuning
-
-🔹 Data Architecture
-
-Designing bronze/silver/gold layers
-
-Building scalable warehouse structures
-
-🔹 Data Analysis
-
-Statistical analysis through SQL
-
-Operational insights
-
-KPI development
-
-Perfect for roles like:
-
-✔️ Data Engineer
-✔️ SQL Developer
-✔️ ETL Developer
-✔️ Analytics Engineer
-✔️ BI Developer
-
-🛠️ Important Links & Tools
+🛠️ Tools & Technologies
 
 Everything used in this project is free:
 
-📂 Datasets
+🔧 Database & Query Tools
 
-NHS GP Appointments & Coverage Open Data (CSV files)
+SQL Server Express
 
-🗃️ SQL Server Express
+SQL Server Management Studio (SSMS)
 
-Lightweight free database for implementing the warehouse.
+💾 Data Sources
 
-🧰 SQL Server Management Studio (SSMS)
+NHS GP Appointments Dataset (CSV)
 
-To manage, query, and build your database.
+NHS Patient Coverage Dataset (CSV)
 
-📘 Git Repository
+📘 Documentation & Diagrams
 
-For version-controlled SQL scripts, ETL stages, and documentation.
+Notion – project planning
 
-📐 DrawIO
+DrawIO – architecture & modeling diagrams
 
-To create architecture diagrams and data models.
-
-🧩 Notion Project Template
-
-To track tasks, design epics, and plan the project (Bronze–Silver–Gold flow).
+GitHub – version control
 
 🚀 Project Requirements
-Part 1 — Building the Data Warehouse (Data Engineering)
+Part 1 — Data Warehouse (Data Engineering)
 Objective
 
-Develop a modern SQL Server data warehouse to consolidate NHS GP appointment and coverage data for analytical reporting.
+Build a SQL Server data warehouse that consolidates NHS GP appointment and coverage datasets.
 
 Specifications
 
-Data Sources: Two datasets (Appointments + Coverage), delivered as CSV files
+Ingest 2 source datasets (Appointments + Coverage)
 
-Data Quality: Clean and standardise raw data
+Cleanse & standardise all data
 
-Integration: Combine both datasets into unified, analytics-ready tables
+Integrate fields into dimension/fact schema
 
-Modeling: Build star schema with fact & dimension tables
+No historisation required
 
-Documentation: Provide clear schema & ETL documentation
+Provide full documentation of the data model
 
-Scope: No SCD / historisation required (latest version only)
-
-📊 Part 2 — Analytics & Reporting (Data Analysis)
+Part 2 — Analytics & Reporting (Data Analysis)
 Objective
 
-Develop SQL-based insights across key healthcare metrics:
+Produce SQL-driven insights focusing on GP operational performance.
 
-Examples:
+Key Themes
 
-Appointment volumes by month, region, ICB
+Appointment volumes and trends
 
-DNA rate trends over time
+DNA rate analysis
 
-Appointment modes (Face-to-Face, Telephone, Video)
+Wait time band distribution
 
-Waiting time band distributions
+Mode of appointment comparisons
 
-Capacity vs demand using registered patient counts
+Capacity vs demand (patients vs appointments)
 
-These insights inform:
+Regional & ICB comparisons
 
-Operational planning
-
-Staffing decisions
-
-Patient demand management
-
-GP accessibility metrics
+These insights support operational planning, resource allocation, and patient accessibility metrics.
