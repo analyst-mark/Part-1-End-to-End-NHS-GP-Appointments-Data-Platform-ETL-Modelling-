@@ -104,7 +104,7 @@ Perfect for roles such as:
 Build a SQL Server data warehouse that consolidates NHS GP appointment and coverage datasets for analytics.
 
 #### 📌 Specifications
-- Import two source datasets (Appointments + Coverage)  
+- Import two source datasets (Appointments + Coverage )  
 - Clean & standardise raw data  
 - Integrate fields into analytical star schema  
 - No historisation required (latest version only)  
